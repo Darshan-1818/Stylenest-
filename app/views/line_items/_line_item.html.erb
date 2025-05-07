@@ -1,0 +1,17 @@
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Store Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= line_item.quantity %> &times;</td>
+      <td><%= line_item.store.name %></td>
+      <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+    </tr>
+  </tbody>
+</table>
+

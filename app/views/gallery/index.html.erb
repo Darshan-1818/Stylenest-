@@ -1,0 +1,21 @@
+
+<% @cloth_gallery.each_slice(3) do |cloth_row| %>
+   <div class="row">
+     <% cloth_row.each do |cloth| %>
+       <div class="col-lg-4 col-sm-4">
+         <div class="box_main">
+           <h4 class="shirt_text"><%= cloth.name %></h4>
+           <p class="price_text">Price <span style="color: #262626;"><%= cloth.price %></span></p>
+           <div class="tshirt_img"><%= image_tag cloth.cloth_image, height: "500", width: "300" %></div>
+           <div class="btn_main">
+             <div class="buy_bt"><a href="#">Buy Now</a></div>
+             <%= button_to 'Add to Cart', line_items_path(store_id: cloth.id) %>
+           </div>
+         </div>
+       </div>
+     <% end %>
+   </div>
+ <% end %>
+ 
+ 
+ 

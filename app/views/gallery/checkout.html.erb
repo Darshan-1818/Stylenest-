@@ -1,0 +1,40 @@
+<%= flash[:notice] %>
+
+<div class="container mt-4">
+  <h3 class="mb-4">Total Amount to be paid: <%= number_to_currency(session[:amount]) %></h3>
+
+  <%= form_with url: "/gallery/checkout", method: :post, html: { class: "needs-validation", novalidate: true } do |form| %>
+    <div class="mb-3">
+      <%= form.label :first_name, class: "form-label" %>
+      <%= form.text_field :first_name, class: "form-control", required: true %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :last_name, class: "form-label" %>
+      <%= form.text_field :last_name, class: "form-control", required: true %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :credit_card_no, "Credit Card Number", class: "form-label" %>
+      <%= form.text_field :credit_card_no, class: "form-control", required: true %>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Date of Expiry</label>
+      <div class="d-flex gap-2">
+        <%= select_month(Date.today, field_name: 'month', prefix: 'check', class: 'form-select') %>
+        <%= select_year(Date.today, start_year: Date.today.year, end_year: 2044, field_name: 'year', prefix: 'check', class: 'form-select') %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :verification_number, class: "form-label" %>
+      <%= form.text_field :verification_number, class: "form-control", required: true %>
+    </div>
+
+    <div class="d-grid">
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+

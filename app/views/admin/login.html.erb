@@ -1,0 +1,17 @@
+<%= flash[:notice] %>
+
+<h1 class="mb-4">Admin Login</h1>  </br>
+
+<%= form_with url: "/admin/login", method: :post, local: true, html: { class: "p-4 border rounded shadow-sm bg-light" } do |form| %>
+  <div class="mb-3">
+    <%= form.label :username, "Username", class: "form-label" %>
+    <%= form.text_field :username, class: "form-control", id: "username" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password, "Password", class: "form-label" %>
+    <%= form.password_field :password, class: "form-control", id: "password" %>
+  </div>
+
+  <%= form.submit "Login", class: "btn btn-primary" %>
+<% end %>
